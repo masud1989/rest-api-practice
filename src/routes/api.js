@@ -1,6 +1,6 @@
 const express = require('express');
 const { HelloGet, HelloPost } = require('../controllers/HelloController');
-const { insertData } = require('../controllers/ProductsController');
+const { insertData, ReadData } = require('../controllers/ProductsController');
 const router = express.Router();
 
 
@@ -8,6 +8,7 @@ const router = express.Router();
 router.get('/hello-get', HelloGet);
 router.post('/hello-post', HelloPost);
 
-router.post('/insert-product', insertData)
+router.post('/insert-product', insertData);
+router.get('/products', ReadData);
 
 module.exports = router;
