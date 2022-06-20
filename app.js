@@ -1,5 +1,6 @@
 const express = require('express');
 const router = require('./src/routes/api');
+const mongoose = require('mongoose')
 
 const app = new express();
 
@@ -24,6 +25,19 @@ const limiter = rateLimit({
     max: 100, //limit each IP to 100 Requests per windowMs
 });
 app.use(limiter);
+
+
+
+//Database Connection starts
+const uri = "mongodb://localhost:27017/shop";
+const option = {user:'', pass:''};
+mongoose.connect(uri, option, (error)=>{
+    console.log('Connection Success');
+    console.log('Error occured:'+' ' + error);
+})
+//Database Connection ends
+
+
 
 // Routes 
 app.use('/api/v1', router);
