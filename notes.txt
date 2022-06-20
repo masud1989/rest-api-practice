@@ -1,0 +1,12 @@
+1. Create New Folder (rest-api)
+2. Go to folder "rest-api"
+3. cmd promt => 
+	npm init --y 
+	Enter
+4. npm i express body-parser cookie-parser jsonwebtoken multer dotenv cors express-mongo-sanitize express-rate-limit helmet hpp xss-clean mysql mongoose mysql
+ 
+5. Create index.js file at Root Directory
+
+6. Create app.js file at Root Directory
+
+7. 
