@@ -1,5 +1,8 @@
 const app = require("./app");
 
-app.listen(5000, () => {
-    console.log('Server Connection Success');
+const dotenv = require('dotenv');
+dotenv.config();
+
+app.listen(process.env.RUNNING_PORT, () => {
+    console.log('Server Connection Success from port:' + process.env.RUNNING_PORT);
 })
