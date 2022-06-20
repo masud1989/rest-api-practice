@@ -1,8 +1,29 @@
 const express = require('express');
 const router = require('./src/routes/api');
 
-
 const app = new express();
+
+// Security Middleware Import 
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
+const cors = require('cors');
+
+// Security Middleware Implement
+app.use(cors());
+app.use(helmet());
+app.use(rateLimit());
+app.use(mongoSanitize());
+app.use(hpp());
+
+// Request Rate Limiting
+const limiter = rateLimit({
+    windowMs: 15*60*1000, //15 minuites limit
+    max: 100, //limit each IP to 100 Requests per windowMs
+});
+app.use(limiter);
 
 // Routes 
 app.use('/api/v1', router);
